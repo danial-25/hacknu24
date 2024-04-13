@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from .models import Grammar_find_word
+from .models import Grammar_find_word, Grammar_choose_correct
 import random
 
 
@@ -26,6 +26,24 @@ def find_word(requests):
                 "text": obj.text,
                 "answer": obj.answer,
                 "options": obj.options,
+            }
+        )
+
+    return Response(response_data)
+
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def choose_correct(requests):
+    response_data = []
+    all_obj = Grammar_choose_correct.objects.all()
+    for obj in all_obj:
+        response_data.append(
+            {
+                "question": obj.question,
+                "answer": obj.answer,
+                "options": obj.options,
+                "word_to_replace": obj.word_to_replace,
             }
         )
 
