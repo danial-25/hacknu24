@@ -7,6 +7,7 @@ class Reading_module(models.Model):
     questions = models.TextField()
     options = models.JSONField(default=list)
     answer = models.TextField()
+    level = models.IntegerField(default=1)
 
 
 class Reading_puzzle(models.Model):

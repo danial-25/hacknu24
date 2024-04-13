@@ -10,9 +10,9 @@ from rest_framework.response import Response
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
-def answer_questions(request):
+def answer_questions(request, level):
     # question = request.GET.get("id")
-    all_obj = Reading_module.objects.all()
+    all_obj = Reading_module.objects.filter(level=level)
 
     response_data = []
     for obj in all_obj:
@@ -22,6 +22,7 @@ def answer_questions(request):
                 "questions": obj.questions,
                 "options": obj.options,
                 "answer": obj.answer,
+                "level": obj.level,
             }
         )
 

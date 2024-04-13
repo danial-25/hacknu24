@@ -26,4 +26,5 @@ with open("data.json", "r") as f:
             questions=question_text,
             options=options,
             answer=correct_answers,
+            level=item["level"],
         )
