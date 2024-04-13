@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 config = dotenv_values(".env")
-SECRET_KEY=config["SECRET_KEY"]
+SECRET_KEY = config["SECRET_KEY"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -116,7 +116,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+CORS_ALLOW_ALL_ORIGINS = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
