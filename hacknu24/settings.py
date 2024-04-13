@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "reading_module",
     "grammmar",
     "corsheaders",
+    "users",
 ]
 
 MIDDLEWARE = [

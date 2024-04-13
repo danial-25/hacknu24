@@ -22,4 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("reading_module.urls")),
     path("", include("grammmar.urls")),
+    path("", include("users.urls")),
 ]
