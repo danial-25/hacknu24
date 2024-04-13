@@ -1,5 +1,4 @@
 from django.shortcuts import render
-import requests
 import os
 from .models import Reading_module
 from rest_framework.decorators import api_view, permission_classes
