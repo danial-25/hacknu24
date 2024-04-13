@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "reading_module",
     "rest_framework",
+    "reading_module",
     "grammmar",
     "corsheaders",
 ]

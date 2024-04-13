@@ -21,4 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("reading_module.urls")),
+    path("", include("grammmar.urls")),
 ]

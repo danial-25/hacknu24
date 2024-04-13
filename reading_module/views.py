@@ -28,11 +28,7 @@ def answer_questions(request):
     return Response(response_data)
 
 
-texts = [
-    "Өте сабырлы болғандықтан",
-    "Ауыр жарақаттанбағандықтан",
-    "Сынықше дәрі бергендіктен",
-]
+
 # @api_view(["GET"])
 # @permission_classes([AllowAny])
 # def translate_sentence(request):
