@@ -28,6 +28,22 @@ def sing_up(requests):
         return Response({"message": "User with this email already exists"}, status=400)
 
 
+# @api_view(["POST"])
+# @permission_classes([AllowAny])
+# def log_in(request):
+#     data = request.data  # Retrieve data from request body
+#     print(data)
+#     email = data.get("email")
+#     password = data.get("password")
+#     try:
+#         user = User_data.objects.get(email=email)
+#         if user.password == password:
+#             return Response({"first": user.grammar_find_word})
+#         return Response(status=202)
+#     except User_data.DoesNotExist:
+#         return Response(status=404)
+
+
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def log_in(requests):
@@ -37,6 +53,27 @@ def log_in(requests):
     password = data.get("password")
     user = User_data.objects.get(email=email)
     if user.password == password:
-        return Response({"message": "nice"}, status=200)
+        return Response(status=200)
     return Response(status=202)
 
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def history(request):
+    email = request.GET.get("email")
+    if email is not None:
+        try:
+            u = User_data.objects.get(email=email)
+            email_exists = True
+        except User_data.DoesNotExist:
+            return Response({"error": "User doesn't exist"}, status=403)
+        return Response(
+            {
+                "reading_texts": u.reading_texts,
+                "reading_puzzles": u.reading_puzzles,
+                "choose_correct": u.grammar_choose_correct,
+                "find_word": u.grammar_find_word,
+            }
+        )
+    else:
+        return Response({"error": "Email parameter is missing"}, status=400)
